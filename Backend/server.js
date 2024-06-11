@@ -1,9 +1,13 @@
 const express = require("express");
+const colors = require("colors");
 const dotenv = require("dotenv/config");
 const { errorHandler } = require("./Middleware/errorMiddleware");
-
+const connectDB = require("./Config/db")
 
 const port = process.env.PORT || 5000;
+
+// run mongoose
+connectDB();
 
 // Boiler Plate middleware
 const app = express();
