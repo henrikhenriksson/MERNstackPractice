@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api/goals", require("./Routes/GoalRoutes"));
+app.use("/api/users", require("./Routes/userRoutes"));
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on Port:${port}`));
