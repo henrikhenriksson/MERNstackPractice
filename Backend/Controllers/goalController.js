@@ -7,10 +7,11 @@ const Goal = require("../Models/goalModel");
 // @route GET /api/goals
 // @access Private
 const getGoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find(); // all of them
+  const goals = await Goal.find({user: req.user.id}); // all of them
 
   res.status(200).json(goals);
 });
+
 // @desc Set Goals
 // @route POST /api/goals
 // @access Private
@@ -22,6 +23,7 @@ const setGoal = asyncHandler(async (req, res) => {
 
   const goal = await Goal.create({
     text: req.body.text,
+    user: req.user.id // connect text to a user
   });
 
   res.status(200).json(goal);
